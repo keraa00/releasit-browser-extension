@@ -25,6 +25,6 @@ const result = {
   shopifyDomain: getShopifyDomain(),
 };
 
-console.log("[Releasit COD Detector]", result.pageType);
+console.log("[Releasit COD Detector]", result);
 
 chrome.storage.local.set({ releasitDetection: result });
