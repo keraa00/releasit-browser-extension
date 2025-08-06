@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <title>Releasit COD Detector</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="header">
-      <img src="./icons/icon16.png" alt="releasit" width="32" height="32" />
-      <h2>Releasit COD Form</h2>
+      <img src="./icons/icon16.png" alt="releasit" width="24" height="24" />
+      <h1>Releasit COD Form</h1>
     </div>
-    <div class="info">
-      <span class="label">Shopify Domain:</span>
-      <h2 class="value" id="shopifyDomain" style="cursor: copy">Loading...</h2>
+
+    <div class="info-card">
+      <span class="label">🛍️ Shopify Domain</span>
+      <span class="value" id="shopifyDomain">-</span>
     </div>
-    <div class="info">
-      <span class="label">Page Type:</span
-      ><span class="value" id="pageType">Loading...</span>
+    <div class="info-card">
+      <span class="label">📄 Page Type</span>
+      <span class="value" id="pageType">-</span>
     </div>
-    <div class="info">
-      <span class="label">Releasit COD Present:</span
-      ><span class="value" id="releasit">Loading...</span>
+    <div class="info-card">
+      <span class="label">🔍 Releasit Active</span>
+      <span class="value" id="releasit">-</span>
     </div>
+    <div class="info-card">
+      <span class="label">🧩  Releasit Version</span>
+      <span class="value" id="appVersion">-</span>
+    </div>
+    <div class="info-card">
+      <span class="label">🚫 Sold Out</span>
+      <span class="value" id="productSoldOut">-</span>
+    </div>
+
     <script src="/popup.js" defer></script>
   </body>
 </html>
+
