@@ -14,7 +14,8 @@ function detectReleasitForm() {
 }
 
 function getShopifyDomain() {
-  return window.Shopify?.shop || "Not available";
+  console.log("The domain is ", window.Shopify?.shop || "Not available");
+  return Shopify?.shop || "Not available";
 }
 
 const result = {
