@@ -12,6 +12,7 @@
       setText("releasit", "—");
       setText("productSoldOut", "—");
       setText("appVersion", "—");
+      setText("usesGempages", "—");
 
       return;
     }
@@ -68,6 +69,60 @@
             }
             return "—";
           };
+          const detectGempages = () => {
+            if (window._rsi?.isGemPages) {
+              console.log("PageFly detected via _rsi.isGemPages");
+              return true;
+            }
+            if (window._rsiV2?.getState?.().isGemPages) {
+              console.log("PageFly detected via _rsiV2.getState().isGemPages");
+              return true;
+            }
+            return false;
+          };
+          const detectPageFly = () => {
+            try {
+              // ✅ Check inside Releasit objects
+              if (window._rsi?.isPageFly) {
+                console.log("PageFly detected via _rsi.isPageFly");
+                return true;
+              }
+              if (window._rsiV2?.getState?.().isPageFly) {
+                console.log("PageFly detected via _rsiv2.getState().isPageFly");
+                return true;
+              }
+              return false;
+            } catch (err) {
+              console.error("Error while detecting PageFly:", err);
+              return false;
+            }
+          };
+
+          const detectZipify = () => {
+            try {
+              // ✅ Check inside Releasit objects
+              if (window._rsi?.isZipify) {
+                console.log("Zipify detected via _rsi.isZipify");
+                return true;
+              }
+              if (window._rsiV2?.getState?.().isZipify) {
+                console.log("Zipify detected via _rsiv2.getState().isZipify");
+                return true;
+              }
+
+              // ✅ Global object check
+              if (window.ZipifyPages) {
+                console.log("Zipify detected via window.ZipifyPages");
+                return true;
+              }
+
+              console.log("Zipify NOT detected");
+              return false;
+            } catch (err) {
+              console.error("Error while detecting Zipify:", err);
+              return false;
+            }
+          };
 
           // Shopify Data obtained from MAIN world
           const shopify = window.Shopify || {};
@@ -82,6 +137,9 @@
 
           const pageType = detectPageType();
           const productSoldOut = await collectProductSoldOut();
+          const gempages = detectGempages();
+          const pagefly = detectPageFly();
+          const zipify = detectZipify();
 
           return {
             shop,
@@ -91,6 +149,9 @@
             productSoldOut,
             pageType,
             url: location.href,
+            gempages,
+            pagefly,
+            zipify,
           };
         },
       });

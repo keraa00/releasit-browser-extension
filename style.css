@@ -42,3 +42,7 @@ body {
   color: #111;
   word-break: break-word;
 }
+
+#shopifyDomain {
+  cursor: copy;
+}
